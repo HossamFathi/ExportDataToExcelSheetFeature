@@ -1,0 +1,85 @@
+﻿@model List<ExportExcellSheetFeature.Models.FakecData>;
+
+@{
+    ViewData["Title"] = "Export Excel";
+}
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Download Report</h3>
+        </div>
+        <form autocomplete="off" asp-controller="Report" asp-antiforgery="true" asp-action="DownloadData" method="post">
+            <div class="card-body register-card-body">
+                <div class="form-row">
+                    <button type="submit" id="btnsubmit" class="btn btn-success">Export to Excel</button>
+                </div>
+
+            </div>
+            <div class="card-footer">
+            </div>
+        </form>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>
+                UserName
+            </td>
+            <td>
+                FirstName
+            </td>
+            <td>
+                LastName
+            </td>
+            <td> 
+                Email
+            </td>
+            <td>
+                MobileNo
+            </td>
+            <td>
+                Status
+            </td>
+            <td>
+                Gender
+
+            </td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.UserName
+                </td>
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    @item.LastName
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.MobileNo
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    @item.Gender
+
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
