@@ -31,7 +31,7 @@ namespace ExportExcellSheetFeature.Controllers
             var list = _IReporting.GetUserwiseReport();
             if (list.Count > 0)
             {
-                var exportbytes = ExporttoExcel<FakecData>(list, reportname);
+                var exportbytes = _IReporting.ExporttoExcel<FakecData>(list, reportname);
                 return File(exportbytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", reportname);
             }
             else
@@ -41,12 +41,6 @@ namespace ExportExcellSheetFeature.Controllers
             }
         }
 
-        private byte[] ExporttoExcel<T>(List<T> table, string filename)
-        {
-            using ExcelPackage pack = new ExcelPackage();
-            ExcelWorksheet ws = pack.Workbook.Worksheets.Add(filename);
-            ws.Cells["A1"].LoadFromCollection(table, true, TableStyles.Light1);
-            return pack.GetAsByteArray();
-        }
+      
     }
 }
